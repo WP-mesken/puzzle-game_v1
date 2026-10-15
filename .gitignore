@@ -1,0 +1,30 @@
+# Виртуальные окружения
+.venv/
+venv/
+env/
+
+# Кэш Python
+__pycache__/
+*.py[cod]
+
+# Секреты и локальные настройки
+.env
+.env.*
+!.env.example
+
+# Файлы IDE
+.idea/
+
+# Сборка и тестирование
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Системные файлы
+.DS_Store
+
+# Тесты с Tkinter
+/Tests with Tkinter/
