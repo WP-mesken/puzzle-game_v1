@@ -190,10 +190,10 @@ back_to_settings_btn.pack(pady=10)
 
 hints_btn = Button(
     info_frame,
-    text='There’s nothing here',
+    text='Definitely not a hint for the 1st level.',
     command=open_hints,
     font=('Comic Sans MS', 20, 'bold'),
-    width=20,
+    width=32,
     height=2,
     bg=BG,
     activebackground=BG,
