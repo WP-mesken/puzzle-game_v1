@@ -17,7 +17,7 @@ root.iconphoto(True, icon)
 # Начальное окно
 
 root['bg'] = '#D6C1A6'
-menu_frame = Frame(root, bg='#D6C1A6') #Создаем контейнер внутри окна, чтобы потом внутри него были кнопки
+menu_frame = Frame(root) #Создаем контейнер внутри окна, чтобы потом внутри него были кнопки
 menu_frame.pack(expand=True)
 
 ## кнопка играть
@@ -43,7 +43,7 @@ btn_play.pack(pady=10)
 def f_btn_menu(): #TODO: кнопка меню
     pass
 
-btn_menu = Button(menu_frame,
+Button(menu_frame,
                   text="Settings",                      #текст на кнопке
                   command=f_btn_menu,                   #что происходит при нажатии
                   font=('Comic Sans MS',  20, 'bold'),  #размер шрифта
