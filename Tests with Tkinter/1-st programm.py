@@ -76,8 +76,18 @@ settings.pack(pady=10)
 
 #сама игра:
 
-def add_digit(): #TODO Сделать строку с добавлением цифр
-    pass
+#Добавление цифры в графу
+def add_digit(char):
+    current_text = display_var.get()
+
+    # Проверяем ограничение на 8 символов и что символ является цифрой
+    if len(current_text) < 8 and char.isdigit():
+        display_var.set(current_text + char)
+
+# Обработка цифры с клавиатуры
+def on_key_press(event):
+    add_digit(event.char)
+
 
 def back_to_menu_from_game():
        game_frame.pack_forget()
