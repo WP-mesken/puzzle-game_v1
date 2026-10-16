@@ -198,7 +198,7 @@ hints_btn = Button(
     bg=BG,
     activebackground=BG,
     activeforeground=BG,
-    fg= '#ccaf87',
+    fg= '#cfbca3',
     relief='flat',
     borderwidth=0,
     highlightthickness=0)
@@ -213,7 +213,16 @@ def close_hints():
 hints_frame = Frame(root, bg=BG)
 
 
-#TODO:Сделать надпись с подсказкой на 1 уровень
+first_hint_lbl = Label(
+    hints_frame,
+    text='A1, B2, C3, D4 ... \n Find smth on the menu',
+    font=('Comic Sans MS', 20, 'bold'),
+    width=30,
+    height=4,
+    bg=BTN_BG,
+    fg=BTN_FG
+)
+first_hint_lbl.pack(pady=40)
 
 back_to_info_btn = Button(
     hints_frame,
@@ -420,7 +429,7 @@ back_btn.grid(
 
 # Обработка нажатий клавиш
 root.bind('<Key>', on_key_press)
-#FIXME: Есть проблема, что печатать можно и не открывая окна. Но это забавно))) Поэтому можно оставить
+#FIXME: Есть проблема, что печатать можно и не открывая окна. Но это забавно))) Поэтому можно оставить как головоломку
 
 
 # Запуск программы
