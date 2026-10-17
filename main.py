@@ -1,6 +1,5 @@
-
 from tkinter import *
-
+from levels import check_level_value
 root = Tk()
 
 # Название окна
@@ -8,7 +7,7 @@ root.title('Puzzle-game')
 
 # Размеры окна
 root.geometry('1200x1500')
-root.resizable(width=False, height=False)
+
 
 # Иконка
 icon = PhotoImage(file='Images/icon for puzzle-game.png')
@@ -34,7 +33,6 @@ menu_frame.pack(expand=True)
 
 def open_game():
     menu_frame.pack_forget()
-    settings_frame.pack_forget()
     game_frame.pack(expand=True)
     root.focus_set()
 
@@ -43,6 +41,10 @@ def open_settings():
     menu_frame.pack_forget()
     game_frame.pack_forget()
     settings_frame.pack(expand=True)
+
+def open_info():
+    menu_frame.pack_forget()
+    info_frame.pack(expand=True)
 
 
 def back_to_menu():
@@ -65,6 +67,21 @@ play_btn = Button(
     fg=BTN_FG
 )
 play_btn.pack(pady=10)
+
+info_btn = Button(
+    menu_frame,
+    text='Info',
+    command=open_info,
+    font=('Comic Sans MS', 20, 'bold'),
+    width=20,
+    height=2,
+    bg=BTN_BG,
+    activebackground=ACTIVE_BG,
+    activeforeground=ACTIVE_FG,
+    fg=BTN_FG
+)
+info_btn.pack(pady=10)
+
 
 
 # Кнопка Settings
@@ -102,7 +119,7 @@ text_widget = Text(
     menu_frame,
     bg=BG,
     fg=BG,
-    font=("Arial", 12),
+    font=("Arial", 20),
     bd=0,
     highlightthickness=0,
     wrap="word",
@@ -128,25 +145,11 @@ insert_readonly_text(text_widget, sample_text)
 # =========================
 
 def open_info():
-    settings_frame.pack_forget()
+    menu_frame.pack_forget()
     info_frame.pack(expand=True)
 
 
 settings_frame = Frame(root, bg=BG)
-
-info_btn = Button(
-    settings_frame,
-    text='Info',
-    command=open_info,
-    font=('Comic Sans MS', 20, 'bold'),
-    width=20,
-    height=2,
-    bg=BTN_BG,
-    activebackground=ACTIVE_BG,
-    activeforeground=ACTIVE_FG,
-    fg=BTN_FG
-)
-info_btn.pack(pady=10)
 
 back_to_settings_btn = Button(
     settings_frame,
@@ -162,11 +165,12 @@ back_to_settings_btn = Button(
 )
 back_to_settings_btn.pack(pady=10)
 
-#Информация
-
+# =========================
+# ИНФОРМАЦИЯ
+# =========================
 def close_info():
     info_frame.pack_forget()
-    settings_frame.pack(expand=True)
+    menu_frame.pack(expand=True)
 
 def open_hints():
     info_frame.pack_forget()
@@ -174,7 +178,31 @@ def open_hints():
 
 info_frame = Frame(root, bg=BG)
 
-back_to_settings_btn = Button(
+heading_first_hint_lbl = Label(
+    info_frame,
+    text='First level',
+    font=('Comic Sans MS', 20, 'bold'),
+    width=30,
+    height=2,
+    bg=BTN_BG,
+    fg=BTN_FG
+)
+heading_first_hint_lbl.pack(pady=40)
+
+
+first_hint_lbl = Label(
+    info_frame,
+    text='Between which 8 identical digits \n can you place the “+” \n sign to get 1000?',
+    font=('Comic Sans MS', 20, 'bold'),
+    width=30,
+    height=6,
+    bg=BTN_BG,
+    fg=BTN_FG
+)
+first_hint_lbl.pack(pady=40)
+
+
+close_info_btn = Button(
     info_frame,
     text='Back',
     command=close_info,
@@ -186,11 +214,11 @@ back_to_settings_btn = Button(
     activeforeground=ACTIVE_FG,
     fg=BTN_FG
 )
-back_to_settings_btn.pack(pady=10)
+close_info_btn.pack(pady=10)
 
 hints_btn = Button(
     info_frame,
-    text='Definitely not a hint for the 1st level.',
+    text='Definitely not a hint for the 1st level',
     command=open_hints,
     font=('Comic Sans MS', 20, 'bold'),
     width=32,
@@ -213,7 +241,7 @@ def close_hints():
 hints_frame = Frame(root, bg=BG)
 
 
-first_hint_lbl = Label(
+not_first_hint_lbl = Label(
     hints_frame,
     text='A1, B2, C3, D4 ... \n Find smth on the menu',
     font=('Comic Sans MS', 20, 'bold'),
@@ -222,7 +250,7 @@ first_hint_lbl = Label(
     bg=BTN_BG,
     fg=BTN_FG
 )
-first_hint_lbl.pack(pady=40)
+not_first_hint_lbl.pack(pady=40)
 
 back_to_info_btn = Button(
     hints_frame,
@@ -251,14 +279,6 @@ game_frame = Frame(root, bg=BG)
 display_var = StringVar()
 
 
-# Добавление цифры в строку
-def add_digit(char):
-    current_text = display_var.get()
-
-    # Только цифры, максимум 8 символов
-    if char.isdigit() and len(current_text) < 8:
-        display_var.set(current_text + char)
-
 
 # Очистка строки
 def clear_display():
@@ -266,11 +286,22 @@ def clear_display():
 
 
 # Отправка введённого значения
-def enter_value(): #TODO: Levels
+def enter_value():
     value = display_var.get()
-    clear_display()
-    # Здесь будет твоя обработка введённого значения
-    print('Введённое значение:', value)
+    check_level_value(value, root, game_frame, BG)
+    root.after(1000, clear_display)
+
+# Добавление цифры в строку
+def add_digit(char):
+    current_text = display_var.get()
+
+    # Только цифры, максимум 8 символов
+    if char.isdigit() and len(current_text) < 8:
+        new_text = current_text + char
+        display_var.set(current_text + char)
+        if len(new_text) == 8:
+            enter_value()
+
 
 
 # Обработка клавиатуры
@@ -282,11 +313,6 @@ def on_key_press(event):
     # Удаление последней цифры
     elif event.keysym == 'BackSpace':
         display_var.set(display_var.get()[:-1])
-
-    # Отправка значения клавишей Enter
-    elif event.keysym == 'Return':
-        if game_frame.winfo_ismapped():
-            enter_value()
 
 
 # Контейнер игрового поля
@@ -389,13 +415,13 @@ zero_btn.grid(
 
 
 # Кнопка Enter — отправить значение
-enter_btn = Button(
+back_btn = Button(
     game_board,
-    text='Enter',
-    command=enter_value,
+    text='Back',
+    command=back_to_menu,
     **button_style
 )
-enter_btn.grid(
+back_btn.grid(
     row=4,
     column=2,
     padx=5,
@@ -404,32 +430,9 @@ enter_btn.grid(
 )
 
 
-# Кнопка Back — под панелью цифр
-back_btn = Button(
-    game_board,
-    text='Back',
-    command=back_to_menu,
-    font=('Comic Sans MS', 20, 'bold'),
-    width=20,
-    height=2,
-    bg=BTN_BG,
-    fg=BTN_FG,
-    activebackground=ACTIVE_BG,
-    activeforeground=ACTIVE_FG
-)
-back_btn.grid(
-    row=5,
-    column=0,
-    columnspan=3,
-    padx=5,
-    pady=(15, 5),
-    sticky='ew'
-)
-
 
 # Обработка нажатий клавиш
 root.bind('<Key>', on_key_press)
-#FIXME: Есть проблема, что печатать можно и не открывая окна. Но это забавно))) Поэтому можно оставить как головоломку
 
 
 # Запуск программы
