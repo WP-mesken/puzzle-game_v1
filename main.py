@@ -178,6 +178,8 @@ def open_hints():
 
 info_frame = Frame(root, bg=BG)
 
+
+
 heading_first_hint_lbl = Label(
     info_frame,
     text='First level',
@@ -231,6 +233,8 @@ hints_btn = Button(
     borderwidth=0,
     highlightthickness=0)
 hints_btn.pack(pady=10)
+
+
 
 # ПОДСКАЗКИ
 
