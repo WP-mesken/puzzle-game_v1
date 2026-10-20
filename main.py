@@ -56,7 +56,7 @@ def back_to_menu():
 # Кнопка Play
 play_btn = Button(
     menu_frame,
-    text='Play',
+    text='Играть',
     command=open_game,
     font=('Comic Sans MS', 20, 'bold'),
     width=20,
@@ -70,7 +70,7 @@ play_btn.pack(pady=10)
 
 info_btn = Button(
     menu_frame,
-    text='Info',
+    text='Информация',
     command=open_info,
     font=('Comic Sans MS', 20, 'bold'),
     width=20,
@@ -87,7 +87,7 @@ info_btn.pack(pady=10)
 # Кнопка Settings
 settings_btn = Button(
     menu_frame,
-    text='Settings',
+    text='Настройки',
     command=open_settings,
     font=('Comic Sans MS', 20, 'bold'),
     width=20,
@@ -103,7 +103,7 @@ settings_btn.pack(pady=10)
 # Кнопка Quit
 quit_btn = Button(
     menu_frame,
-    text='Quit',
+    text='Выйти',
     command=root.destroy,
     font=('Comic Sans MS', 20, 'bold'),
     width=20,
@@ -119,7 +119,7 @@ text_widget = Text(
     menu_frame,
     bg=BG,
     fg=BG,
-    font=("Arial", 20),
+    font=("Comic Sans MS", 20),
     bd=0,
     highlightthickness=0,
     wrap="word",
@@ -153,7 +153,7 @@ settings_frame = Frame(root, bg=BG)
 
 back_to_settings_btn = Button(
     settings_frame,
-    text='Back',
+    text='Назад',
     command=back_to_menu,
     font=('Comic Sans MS', 20, 'bold'),
     width=20,
@@ -168,21 +168,92 @@ back_to_settings_btn.pack(pady=10)
 # =========================
 # ИНФОРМАЦИЯ
 # =========================
+
+def open_first_hint():
+    info_frame.pack_forget()
+    first_hint_frame.pack(expand=True)
+
+def open_authors():
+    info_frame.pack_forget()
+    authors_frame.pack(expand=True)
+
 def close_info():
     info_frame.pack_forget()
     menu_frame.pack(expand=True)
 
-def open_hints():
+def open_last_hint():
     info_frame.pack_forget()
-    hints_frame.pack(expand=True)
+    last_hint_frame.pack(expand=True)
 
 info_frame = Frame(root, bg=BG)
 
+Button(
+    info_frame,
+    text='Первый уровень',
+    command=open_first_hint,
+    font=('Comic Sans MS', 20, 'bold'),
+    width=20,
+    height=2,
+    bg=BTN_BG,
+    activebackground=ACTIVE_BG,
+    activeforeground=ACTIVE_FG,
+    fg=BTN_FG
+).pack(pady=10)
 
+Button(
+    info_frame,
+    text='Авторы',
+    command=open_authors,
+    font=('Comic Sans MS', 20, 'bold'),
+    width=20,
+    height=2,
+    bg=BTN_BG,
+    activebackground=ACTIVE_BG,
+    activeforeground=ACTIVE_FG,
+    fg=BTN_FG
+).pack(pady=10)
+
+Button(
+    info_frame,
+    text='Назад',
+    command=close_info,
+    font=('Comic Sans MS', 20, 'bold'),
+    width=20,
+    height=2,
+    bg=BTN_BG,
+    activebackground=ACTIVE_BG,
+    activeforeground=ACTIVE_FG,
+    fg=BTN_FG
+).pack(pady=10)
+
+
+Button(
+    info_frame,
+    text='Точно не подсказка\n для последнего уровня',
+    command=open_last_hint,
+    font=('Comic Sans MS', 20, 'bold'),
+    width=32,
+    height=2,
+    bg=BG,
+    activebackground=BG,
+    activeforeground=BG,
+    fg= '#cfbca3',
+    relief='flat',
+    borderwidth=0,
+    highlightthickness=0
+).pack(pady=10)
+
+
+#Подсказка на первый уровень
+def close_first_hint():
+    first_hint_frame.pack_forget()
+    info_frame.pack(expand=True)
+
+first_hint_frame = Frame(root, bg=BG)
 
 heading_first_hint_lbl = Label(
-    info_frame,
-    text='First level',
+    first_hint_frame,
+    text='Первый уровень',
     font=('Comic Sans MS', 20, 'bold'),
     width=30,
     height=2,
@@ -193,8 +264,8 @@ heading_first_hint_lbl.pack(pady=40)
 
 
 first_hint_lbl = Label(
-    info_frame,
-    text='Between which 8 identical digits \n can you place the “+” \n sign to get 1000?',
+    first_hint_frame,
+    text='Между какими 8\nодинаковыми цифрами\nможно поставить знак "+",\nчтобы получить 1000',
     font=('Comic Sans MS', 20, 'bold'),
     width=30,
     height=6,
@@ -203,11 +274,10 @@ first_hint_lbl = Label(
 )
 first_hint_lbl.pack(pady=40)
 
-
-close_info_btn = Button(
-    info_frame,
-    text='Back',
-    command=close_info,
+Button(
+    first_hint_frame,
+    text='Назад',
+    command=close_first_hint,
     font=('Comic Sans MS', 20, 'bold'),
     width=20,
     height=2,
@@ -215,39 +285,39 @@ close_info_btn = Button(
     activebackground=ACTIVE_BG,
     activeforeground=ACTIVE_FG,
     fg=BTN_FG
-)
-close_info_btn.pack(pady=10)
+).pack(pady=10)
 
-hints_btn = Button(
-    info_frame,
-    text='Definitely not a hint for the 1st level',
-    command=open_hints,
+#Авторы
+def close_authors():
+    authors_frame.pack_forget()
+    info_frame.pack(expand=True)
+
+authors_frame = Frame(root, bg=BG)
+
+Button(
+    authors_frame,
+    text='Назад',
+    command=close_authors,
     font=('Comic Sans MS', 20, 'bold'),
-    width=32,
+    width=20,
     height=2,
-    bg=BG,
-    activebackground=BG,
-    activeforeground=BG,
-    fg= '#cfbca3',
-    relief='flat',
-    borderwidth=0,
-    highlightthickness=0)
-hints_btn.pack(pady=10)
+    bg=BTN_BG,
+    activebackground=ACTIVE_BG,
+    activeforeground=ACTIVE_FG,
+    fg=BTN_FG
+).pack(pady=10)
 
+#Подсказка на последний уровень
 
+def close_last_hint():
+    last_hint_frame.pack_forget()
+    info_frame.pack(expand=True)
 
-# ПОДСКАЗКИ
-
-def close_hints():
-    hints_frame.pack_forget()
-    menu_frame.pack(expand=True)
-
-hints_frame = Frame(root, bg=BG)
-
+last_hint_frame = Frame(root, bg=BG)
 
 not_first_hint_lbl = Label(
-    hints_frame,
-    text='A1, B2, C3, D4 ... \n Find smth on the menu',
+    last_hint_frame,
+    text='A1, B2, C3, D4 ... \n Найди кое-что в меню',
     font=('Comic Sans MS', 20, 'bold'),
     width=30,
     height=4,
@@ -257,9 +327,9 @@ not_first_hint_lbl = Label(
 not_first_hint_lbl.pack(pady=40)
 
 back_to_info_btn = Button(
-    hints_frame,
-    text='Back to menu',
-    command=close_hints,
+    last_hint_frame,
+    text='Назад в меню',
+    command=close_last_hint,
     font=('Comic Sans MS', 20, 'bold'),
     width=20,
     height=2,
@@ -270,7 +340,7 @@ back_to_info_btn = Button(
 )
 back_to_info_btn.pack(pady=10)
 
-#Подсказка на первый уровень
+
 
 
 # =========================
@@ -421,7 +491,7 @@ zero_btn.grid(
 # Кнопка Enter — отправить значение
 back_btn = Button(
     game_board,
-    text='Back',
+    text='Назад',
     command=back_to_menu,
     **button_style
 )
