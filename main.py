@@ -251,7 +251,7 @@ def close_first_hint():
 
 first_hint_frame = Frame(root, bg=BG)
 
-heading_first_hint_lbl = Label(
+Label(
     first_hint_frame,
     text='Первый уровень',
     font=('Comic Sans MS', 20, 'bold'),
@@ -259,11 +259,9 @@ heading_first_hint_lbl = Label(
     height=2,
     bg=BTN_BG,
     fg=BTN_FG
-)
-heading_first_hint_lbl.pack(pady=40)
+).pack(pady=40)
 
-
-first_hint_lbl = Label(
+Label(
     first_hint_frame,
     text='Между какими 8\nодинаковыми цифрами\nможно поставить знак "+",\nчтобы получить 1000',
     font=('Comic Sans MS', 20, 'bold'),
@@ -271,8 +269,7 @@ first_hint_lbl = Label(
     height=6,
     bg=BTN_BG,
     fg=BTN_FG
-)
-first_hint_lbl.pack(pady=40)
+).pack(pady=40)
 
 Button(
     first_hint_frame,
@@ -293,6 +290,27 @@ def close_authors():
     info_frame.pack(expand=True)
 
 authors_frame = Frame(root, bg=BG)
+
+Label(
+    authors_frame,
+    text='Авторы',
+    font=('Comic Sans MS', 20, 'bold'),
+    width=30,
+    height=2,
+    bg=BTN_BG,
+    fg=BTN_FG
+).pack(pady=40)
+
+Label(
+    authors_frame,
+    text='Главный мескен - Тагир \n Автор идей \nдля головоломок - Артур',
+    font=('Comic Sans MS', 20, 'bold'),
+    width=30,
+    height=4,
+    bg=BTN_BG,
+    fg=BTN_FG
+).pack(pady=40)
+
 
 Button(
     authors_frame,
@@ -315,7 +333,7 @@ def close_last_hint():
 
 last_hint_frame = Frame(root, bg=BG)
 
-not_first_hint_lbl = Label(
+Label(
     last_hint_frame,
     text='A1, B2, C3, D4 ... \n Найди кое-что в меню',
     font=('Comic Sans MS', 20, 'bold'),
@@ -323,10 +341,9 @@ not_first_hint_lbl = Label(
     height=4,
     bg=BTN_BG,
     fg=BTN_FG
-)
-not_first_hint_lbl.pack(pady=40)
+).pack(pady=40)
 
-back_to_info_btn = Button(
+Button(
     last_hint_frame,
     text='Назад в меню',
     command=close_last_hint,
@@ -337,8 +354,7 @@ back_to_info_btn = Button(
     activebackground=ACTIVE_BG,
     activeforeground=ACTIVE_FG,
     fg=BTN_FG
-)
-back_to_info_btn.pack(pady=10)
+).pack(pady=10)
 
 
 
