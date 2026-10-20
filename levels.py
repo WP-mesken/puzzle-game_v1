@@ -16,7 +16,7 @@ def back_to_game_frame(current_response_frame, game_frame):
 
 def check_level_value(value, root, current_frame, bg_color):
     flag = False
-    # 1 уровень
+    # 1 уровень (Слипшиеся цифры)
     if value == "88888888":
         for widget in root.winfo_children():
             if isinstance(widget, Frame):
@@ -27,7 +27,7 @@ def check_level_value(value, root, current_frame, bg_color):
 
         heading_label = Label(
             next_frame,
-            text='Several pairs of digits \n have stuck together. \n Separate them',
+            text='Несколько пар цифр \n слиплись. \n Разделите их',
             font=('Comic Sans MS', 20, 'bold'),
             width=35,
             height=4,
@@ -36,7 +36,7 @@ def check_level_value(value, root, current_frame, bg_color):
         )
         heading_label.pack(pady=40)
 
-        original_image = Image.open("Images/level_1.png")
+        original_image = Image.open("Images/level_1_stuck‑together_digits.png")
         resized_image = original_image.resize((1024, 440))
         tk_image = ImageTk.PhotoImage(resized_image)
         image_label = Label(next_frame, image=tk_image)
@@ -45,7 +45,7 @@ def check_level_value(value, root, current_frame, bg_color):
 
         flag = True
 
-    # 2 уровень
+    # 2 уровень (Судоку)
     elif value == "23652273":
         for widget in root.winfo_children():
             if isinstance(widget, Frame):
@@ -65,7 +65,7 @@ def check_level_value(value, root, current_frame, bg_color):
         )
         heading_label.pack(pady=40)
 
-        original_image = Image.open("Images/level_2.jpg")
+        original_image = Image.open("Images/level_2_sudoku.jpg")
         resized_image = original_image.resize((1024, 988))
         tk_image = ImageTk.PhotoImage(resized_image)
         image_label = Label(next_frame, image=tk_image)
