@@ -303,7 +303,7 @@ Label(
 
 Label(
     authors_frame,
-    text='Главный мескен - Тагир \n Автор идей \nдля головоломок - Артур',
+    text='Автор идей \nдля головоломок - Артур\nОстальное - Тагир',
     font=('Comic Sans MS', 20, 'bold'),
     width=30,
     height=4,
