@@ -27,7 +27,7 @@ def check_level_value(value, root, current_frame, game_frame, bg_color):
 
         heading_label = Label(
             next_frame,
-            text='Несколькопар\n цифрслиплись. \n Разделитеих',
+            text='Несколькопар цифрслиплись \n Разделитеих',
             font=('Comic Sans MS', 20, 'bold'),
             width=35,
             height=4,
@@ -74,7 +74,7 @@ def check_level_value(value, root, current_frame, game_frame, bg_color):
 
         flag = True
 
-    # 3 уровень
+    # 3 уровень (спички)
     elif value == "28165569":
         for widget in root.winfo_children():
             if isinstance(widget, Frame):
@@ -95,7 +95,7 @@ def check_level_value(value, root, current_frame, game_frame, bg_color):
         heading_label.pack(pady=40)
 
         original_image = Image.open("Images/level_3_matches.png")
-        resized_image = original_image.resize((1024, 988))
+        resized_image = original_image.resize((1024, 682))
         tk_image = ImageTk.PhotoImage(resized_image)
         image_label = Label(next_frame, image=tk_image)
         image_label.image = tk_image
@@ -124,7 +124,7 @@ def check_level_value(value, root, current_frame, game_frame, bg_color):
         heading_label.pack(pady=40)
 
         original_image = Image.open("Images/level_4_Bidstrup.jpg") #TODO: Разделить фото на части, составив пазл
-        resized_image = original_image.resize((1024, 988))
+        resized_image = original_image.resize((768, 1024))
         tk_image = ImageTk.PhotoImage(resized_image)
         image_label = Label(next_frame, image=tk_image)
         image_label.image = tk_image
@@ -153,7 +153,7 @@ def check_level_value(value, root, current_frame, game_frame, bg_color):
         heading_label.pack(pady=40)
 
         original_image = Image.open("Images/level_5_strange distances.png")
-        resized_image = original_image.resize((1024, 988))
+        resized_image = original_image.resize((1024, 243))
         tk_image = ImageTk.PhotoImage(resized_image)
         image_label = Label(next_frame, image=tk_image)
         image_label.image = tk_image
@@ -182,7 +182,7 @@ def check_level_value(value, root, current_frame, game_frame, bg_color):
         heading_label.pack(pady=40)
 
         original_image = Image.open("Images/level_6_superimposed_numbers.png")
-        resized_image = original_image.resize((1024, 988))
+        resized_image = original_image.resize((1024, 650))
         tk_image = ImageTk.PhotoImage(resized_image)
         image_label = Label(next_frame, image=tk_image)
         image_label.image = tk_image
@@ -211,7 +211,7 @@ def check_level_value(value, root, current_frame, game_frame, bg_color):
         heading_label.pack(pady=40)
 
         original_image = Image.open("Images/level_7_menu_frame.jpg")
-        resized_image = original_image.resize((1024, 988))
+        resized_image = original_image.resize((1024, 275))
         tk_image = ImageTk.PhotoImage(resized_image)
         image_label = Label(next_frame, image=tk_image)
         image_label.image = tk_image
@@ -240,7 +240,7 @@ def check_level_value(value, root, current_frame, game_frame, bg_color):
         heading_label.pack(pady=40)
 
         original_image = Image.open("Images/level_8_towers.png")
-        resized_image = original_image.resize((1024, 988))
+        resized_image = original_image.resize((768, 898))
         tk_image = ImageTk.PhotoImage(resized_image)
         image_label = Label(next_frame, image=tk_image)
         image_label.image = tk_image
@@ -255,7 +255,7 @@ def check_level_value(value, root, current_frame, game_frame, bg_color):
                 widget.pack_forget()
         #
         next_frame = Frame(root, bg=bg_color)
-        next_frame.pack(fill="both", expand=True)
+        next_frame.pack(expand=True)
 
         heading_label = Label(
             next_frame,
@@ -270,13 +270,13 @@ def check_level_value(value, root, current_frame, game_frame, bg_color):
         flag = True
 
     # 10 (конец)
-    elif value == "84124382":
+    elif value == "13191114":
         for widget in root.winfo_children():
             if isinstance(widget, Frame):
                 widget.pack_forget()
         #
         next_frame = Frame(root, bg=bg_color)
-        next_frame.pack(fill="both", expand=True)
+        next_frame.pack(expand=True)
 
         heading_label = Label(
             next_frame,
