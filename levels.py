@@ -14,7 +14,7 @@ def back_to_game_frame(current_response_frame, game_frame):
     game_frame.pack(fill="both", expand=True)
 
 
-def check_level_value(value, root, current_frame, bg_color):
+def check_level_value(value, root, current_frame, game_frame, bg_color):
     flag = False
     # 1 уровень (Слипшиеся цифры)
     if value == "88888888":
@@ -201,7 +201,7 @@ def check_level_value(value, root, current_frame, bg_color):
 
         heading_label = Label(
             next_frame,
-            text='Я все вижу! Не пиши при мне',
+            text='Я вижу что ты пишешь!\nНе пиши при мне',
             font=('Comic Sans MS', 20, 'bold'),
             width=35,
             height=3,
@@ -220,7 +220,7 @@ def check_level_value(value, root, current_frame, bg_color):
         flag = True
 
     # 8 уровень
-    elif value == "10372048": #TODO:Добавить проверку, что находишься внутри menu_frame
+    elif value == "10372048" and current_frame.winfo_name() != "game_frame":
         for widget in root.winfo_children():
             if isinstance(widget, Frame):
                 widget.pack_forget()
@@ -295,7 +295,7 @@ def check_level_value(value, root, current_frame, bg_color):
             next_frame,
             text="Back",
             font=("Comic Sans MS", 16),
-            command=lambda: back_to_game_frame(next_frame, current_frame),
+            command=lambda: back_to_game_frame(next_frame, game_frame),
             width = 20,
             height = 2,
             bg = BTN_BG,

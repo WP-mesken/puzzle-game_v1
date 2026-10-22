@@ -30,12 +30,14 @@ root.configure(bg=BG)
 menu_frame = Frame(root, bg=BG)
 menu_frame.pack(expand=True)
 
+checker_game_frame = menu_frame #INFO: Он либо menu_frame, если не game_frame и game_frame, если да
 
 def open_game():
+    global checker_game_frame
     menu_frame.pack_forget()
     game_frame.pack(expand=True)
     root.focus_set()
-
+    checker_game_frame = game_frame
 
 def open_settings():
     menu_frame.pack_forget()
@@ -48,9 +50,11 @@ def open_info():
 
 
 def back_to_menu():
+    global checker_game_frame
     game_frame.pack_forget()
     settings_frame.pack_forget()
     menu_frame.pack(expand=True)
+    checker_game_frame = menu_frame
 
 
 # Кнопка Play
@@ -143,11 +147,6 @@ insert_readonly_text(text_widget, sample_text)
 # =========================
 # НАСТРОЙКИ
 # =========================
-
-def open_info():
-    menu_frame.pack_forget()
-    info_frame.pack(expand=True)
-
 
 settings_frame = Frame(root, bg=BG)
 
@@ -363,7 +362,8 @@ Button(
 # ИГРА
 # =========================
 
-game_frame = Frame(root, bg=BG)
+game_frame = Frame(root, bg=BG, name="game_frame")
+
 
 # Переменная для хранения введённых цифр
 display_var = StringVar()
@@ -378,7 +378,7 @@ def clear_display():
 # Отправка введённого значения
 def enter_value():
     value = display_var.get()
-    check_level_value(value, root, game_frame, BG)
+    check_level_value(value, root, checker_game_frame, game_frame, BG)
     root.after(1000, clear_display)
 
 # Добавление цифры в строку
