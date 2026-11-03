@@ -374,6 +374,8 @@ display_var = StringVar()
 def clear_display():
     display_var.set('')
 
+def delete_last_char():
+    display_var.set(display_var.get()[:-1])
 
 # Отправка введённого значения
 def enter_value():
@@ -473,13 +475,13 @@ for row in range(1, 4):
 
 
 # Кнопка C — очистить строку
-clear_btn = Button(
+delete_last_char_btn = Button(
     game_board,
-    text='C',
-    command=clear_display,
+    text='⌫',
+    command=delete_last_char,
     **button_style
 )
-clear_btn.grid(
+delete_last_char_btn.grid(
     row=4,
     column=0,
     padx=5,
