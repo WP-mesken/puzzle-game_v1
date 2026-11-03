@@ -114,17 +114,17 @@ def check_level_value(value, root, current_frame, game_frame, bg_color):
 
         heading_label = Label(
             next_frame,
-            text='Составьте в правильном\nпорядке картинки\nи уберите из них 1, 3, 7',
+            text='Составьте в правильном\nпорядке картинки\nи уберите из них 1, 3, 7 картинки,\n составленных в правильном порядке',
             font=('Comic Sans MS', 20, 'bold'),
             width=35,
-            height=3,
+            height=5,
             bg=BTN_BG,
             fg=BTN_FG
         )
         heading_label.pack(pady=40)
 
         original_image = Image.open("Images/level_4_Bidstrup.png")
-        resized_image = original_image.resize((768, 1024))
+        resized_image = original_image.resize((1040, 780))
         tk_image = ImageTk.PhotoImage(resized_image)
         image_label = Label(next_frame, image=tk_image)
         image_label.image = tk_image
@@ -133,7 +133,7 @@ def check_level_value(value, root, current_frame, game_frame, bg_color):
         flag = True
 
     # 5 уровень
-    elif value == "65782915":
+    elif value == "95178402":
         for widget in root.winfo_children():
             if isinstance(widget, Frame):
                 widget.pack_forget()
@@ -172,10 +172,10 @@ def check_level_value(value, root, current_frame, game_frame, bg_color):
 
         heading_label = Label(
             next_frame,
-            text='', #TODO: Написать короткое описание для левела с наложенными цифрами
-            font=('Comic Sans MS', 20, 'bold'),
-            width=35,
-            height=3,
+            text='Наложите палочки друг на друга\n и смотрите только на зеленый цвет.\n Зеленый - 0, оранжевый - 1, красный - 2,\n синий - 3, фиолетовый - 4, черный - 5',
+            font=('Comic Sans MS', 14, 'bold'),
+            width=50,
+            height=5,
             bg=BTN_BG,
             fg=BTN_FG
         )
