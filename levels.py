@@ -123,7 +123,7 @@ def check_level_value(value, root, current_frame, game_frame, bg_color):
         )
         heading_label.pack(pady=40)
 
-        original_image = Image.open("Images/level_4_Bidstrup.jpg") #TODO: Разделить фото на части, составив пазл
+        original_image = Image.open("Images/level_4_Bidstrup.png")
         resized_image = original_image.resize((768, 1024))
         tk_image = ImageTk.PhotoImage(resized_image)
         image_label = Label(next_frame, image=tk_image)
